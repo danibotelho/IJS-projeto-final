@@ -7,15 +7,10 @@ class Animal {
       this.estaAdotado = false;
     }
   
-    adotar() {
-      this.estaAdotado = true;
-    }
-  
     descrever() {
       return `${this.nome} (${this.especie}, ${this.idade} anos): ${this.descricao}`;
     }
-    
-    
+        
 }
 
 module.exports = Animal;
