@@ -30,7 +30,7 @@ beforeEach(() => {
     "Pxon",
     "Gato",
     2,
-    "Um gatinho preto nmuito animado e carinhoso."
+    "Um gatinho preto muito animado e carinhoso."
   );
 });
 describe("Instituição", () => {
@@ -79,9 +79,22 @@ describe("Instituição", () => {
       {
         quantidade: 1,
         tipo: "medicamentos",
-        listaMedicamentos: ["Vermifugo"]
+        listaMedicamentos: ["Vermifugo"],
       },
     ]);
     expect(resultado.length).toBe(3);
+  });
+
+  it("Teste se o método listarDoações funciona corretamente", () => {
+    const resultado = instituicao.listarDoacoes();
+    expect(resultado).toStrictEqual([
+      { tipo: "dinheiro", valor: "0.00" },
+      { quantidade: "0 kg", tipo: "racao" },
+      {
+        listaMedicamentos: [],
+        quantidade: 0,
+        tipo: "medicamentos",
+      },
+    ]);
   });
 });

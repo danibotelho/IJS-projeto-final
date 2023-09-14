@@ -13,24 +13,25 @@ class Doador extends Pessoa {
 
   doarDinheiro(instituicao, valor) {
     if (!(instituicao instanceof Instituicao)) {
-        console.log('A Intuição Informada não existe.');
-        return;
+      return "A Intuição Informada não existe.";
     }
+
     if (valor > 0) {
-        instituicao.doacoes.dinheiro += valor;
-        this.doacoes.dinheiro += valor;
+      instituicao.doacoes.dinheiro += valor;
+      this.doacoes.dinheiro += valor;
       console.log(
-        `${this.nomeCompleto} doou R$ ${valor.toFixed(2)} para o ${instituicao.nome}.`
+        `${this.nomeCompleto} doou R$ ${valor.toFixed(2)} para o ${
+          instituicao.nome
+        }.`
       );
     } else {
-      console.error("O valor da doação em dinheiro deve ser maior que zero.");
+      return "O valor da doação em dinheiro deve ser maior que zero.";
     }
   }
 
   doarRacao(instituicao, quantidade) {
     if (!(instituicao instanceof Instituicao)) {
-        console.log('A Intuição Informada não existe.');
-        return;
+      return "A Intuição Informada não existe.";
     }
     if (quantidade > 0) {
       instituicao.doacoes.racao += quantidade;
@@ -39,11 +40,14 @@ class Doador extends Pessoa {
         `${this.nomeCompleto} doou ${quantidade} kg de ração para para o ${instituicao.nome}.`
       );
     } else {
-      console.error("A quantidade de ração doada deve ser maior que zero.");
+      return "A quantidade de ração doada deve ser maior que zero.";
     }
   }
 
   doarMedicamento(instituicao, medicamento) {
+    if (!(instituicao instanceof Instituicao)) {
+      return "A Intuição Informada não existe.";
+    }
     this.doacoes.medicamentos.push(medicamento);
     instituicao.doacoes.medicamentos.push(medicamento);
     console.log(

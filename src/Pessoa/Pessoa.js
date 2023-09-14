@@ -16,11 +16,7 @@ class Pessoa {
   }
 
   set idade(novaIdade) {
-    if (novaIdade >= 0) {
-      this.#idade = novaIdade;
-    } else {
-      console.error("A idade não pode ser negativa.");
-    }
+    this.#idade = novaIdade;
   }
 
   get cpf() {
