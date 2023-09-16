@@ -1,4 +1,5 @@
-const Instituicao = require("../Instituicao/Instituicao");
+
+const Abrigo = require("../Abrigo/Abrigo");
 const Pessoa = require("./Pessoa");
 
 class Tutor extends Pessoa {
@@ -7,17 +8,18 @@ class Tutor extends Pessoa {
     this.animaisAdotados = [];
   }
 
-  adotarAnimal(instituicao, animal) {
-    if (!(instituicao instanceof Instituicao)) {
-      return "A Instituição informada não existe.";
+  adotarAnimal(abrigo, animal) {
+    if (!(abrigo instanceof Abrigo)) {
+      return "A Abrigo informada não existe.";
     }
     if (!animal.estaAdotado) {
       animal.estaAdotado = true;
-      instituicao.animaisDisponiveisParaAdocao =
-        instituicao.animaisDisponiveisParaAdocao.filter(
+      animal.tutor = this.nomeCompleto;
+      abrigo.animaisDisponiveisParaAdocao =
+        abrigo.animaisDisponiveisParaAdocao.filter(
           (animalDisponivel) => animalDisponivel !== animal
         );
-      instituicao.animaisAdotados.push(animal);
+      abrigo.animaisAdotados.push(animal);
 
       this.animaisAdotados.push(animal);
 
@@ -37,5 +39,4 @@ class Tutor extends Pessoa {
     return listaNomesEspecies;
   }
 }
-
 module.exports = Tutor;

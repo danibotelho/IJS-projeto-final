@@ -1,4 +1,6 @@
-const Instituicao = require("../Instituicao/Instituicao");
+
+
+const Abrigo = require("../Abrigo/Abrigo");
 const Pessoa = require("./Pessoa");
 
 class Doador extends Pessoa {
@@ -11,17 +13,17 @@ class Doador extends Pessoa {
     };
   }
 
-  doarDinheiro(instituicao, valor) {
-    if (!(instituicao instanceof Instituicao)) {
+  doarDinheiro(abrigo, valor) {
+    if (!(abrigo instanceof Abrigo)) {
       return "A Intuição Informada não existe.";
     }
 
     if (valor > 0) {
-      instituicao.doacoes.dinheiro += valor;
+      abrigo.doacoes.dinheiro += valor;
       this.doacoes.dinheiro += valor;
       console.log(
         `${this.nomeCompleto} doou R$ ${valor.toFixed(2)} para o ${
-          instituicao.nome
+          abrigo.nome
         }.`
       );
     } else {
@@ -29,29 +31,29 @@ class Doador extends Pessoa {
     }
   }
 
-  doarRacao(instituicao, quantidade) {
-    if (!(instituicao instanceof Instituicao)) {
+  doarRacao(abrigo, quantidade) {
+    if (!(abrigo instanceof Abrigo)) {
       return "A Intuição Informada não existe.";
     }
     if (quantidade > 0) {
-      instituicao.doacoes.racao += quantidade;
+      abrigo.doacoes.racao += quantidade;
       this.doacoes.racao += quantidade;
       console.log(
-        `${this.nomeCompleto} doou ${quantidade} kg de ração para para o ${instituicao.nome}.`
+        `${this.nomeCompleto} doou ${quantidade} kg de ração para para o ${abrigo.nome}.`
       );
     } else {
       return "A quantidade de ração doada deve ser maior que zero.";
     }
   }
 
-  doarMedicamento(instituicao, medicamento) {
-    if (!(instituicao instanceof Instituicao)) {
+  doarMedicamento(abrigo, medicamento) {
+    if (!(abrigo instanceof Abrigo)) {
       return "A Intuição Informada não existe.";
     }
     this.doacoes.medicamentos.push(medicamento);
-    instituicao.doacoes.medicamentos.push(medicamento);
+    abrigo.doacoes.medicamentos.push(medicamento);
     console.log(
-      `${this.nomeCompleto} doou o medicamento ${medicamento} para o ${instituicao.nome}.`
+      `${this.nomeCompleto} doou o medicamento ${medicamento} para o ${abrigo.nome}.`
     );
   }
 }

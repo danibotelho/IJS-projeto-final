@@ -1,3 +1,5 @@
+
+
 class Animal {
   constructor(nome, especie, idade, descricao) {
     this.nome = nome;
@@ -5,6 +7,7 @@ class Animal {
     this.idade = idade;
     this.descricao = descricao;
     this.estaAdotado = false;
+    this.tutor = "Sem Tutor";
   }
 
   descrever() {

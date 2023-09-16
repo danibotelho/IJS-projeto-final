@@ -1,4 +1,6 @@
-class Instituicao {
+
+
+class Abrigo {
   constructor(nome, endereco, descricao) {
     this.nome = nome;
     this.endereco = endereco;
@@ -12,7 +14,7 @@ class Instituicao {
     };
   }
 
-  adicionarAnimalAoAbrigo(animal) {
+  adicionarAnimalAoabrigo(animal) {
     this.animaisDisponiveisParaAdocao.push(animal);
   }
 
@@ -58,4 +60,4 @@ class Instituicao {
     return listaDoacoes;
   }
 }
-module.exports = Instituicao;
+module.exports = Abrigo;

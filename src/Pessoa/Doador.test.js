@@ -1,11 +1,11 @@
-const Instituicao = require("../Instituicao/Instituicao");
+const Abrigo = require("../Abrigo/Abrigo");
 const Doador = require("./Doador");
 
-let instituicao, instituicaoII;
+let abrigo, abrigoII;
 let doador1, doador2;
 
 beforeEach(() => {
-  instituicao = new Instituicao("Abrigo de Animais Felizes");
+  abrigo = new Abrigo("abrigo de Animais Felizes");
   doador1 = new Doador(
     "João",
     "123.456.789-00",
@@ -23,41 +23,41 @@ beforeEach(() => {
 });
 describe("Pessoa Doadora", () => {
   it("Teste se o método doarDinheiro funciona corretamente", () => {
-    doador1.doarDinheiro(instituicao, 100);
-    expect(instituicao.doacoes.dinheiro).toBe(100);
+    doador1.doarDinheiro(abrigo, 100);
+    expect(abrigo.doacoes.dinheiro).toBe(100);
   });
 
   it("Teste se o método doarRacao funciona corretamente", () => {
-    doador1.doarRacao(instituicao, 10);
-    doador2.doarRacao(instituicao, 20);
+    doador1.doarRacao(abrigo, 10);
+    doador2.doarRacao(abrigo, 20);
 
-    expect(instituicao.doacoes.racao).toBe(30);
+    expect(abrigo.doacoes.racao).toBe(30);
   });
 
   it("Teste se o método doarMedicamento funciona corretamente", () => {
-    doador2.doarMedicamento(instituicao, "Vermifugo");
-    const result = instituicao.doacoes.medicamentos;
+    doador2.doarMedicamento(abrigo, "Vermifugo");
+    const result = abrigo.doacoes.medicamentos;
     expect(result).toStrictEqual(["Vermifugo"]);
   });
 
   it("Teste se o método doarDinheiro quando a Intituição informada não existe", () => {
-    const resultado = doador1.doarDinheiro(instituicaoII, 100);
+    const resultado = doador1.doarDinheiro(abrigoII, 100);
     expect(resultado).toBe("A Intuição Informada não existe.");
   });
 
   it("Teste se o método doarRacao quando a Intituição informada não existe", () => {
-    const resultado = doador1.doarRacao(instituicaoII, 10);
+    const resultado = doador1.doarRacao(abrigoII, 10);
     expect(resultado).toBe("A Intuição Informada não existe.");
   });
 
   it("Teste se o método doarMedicamento quando a Intituição informada não existe", () => {
-    const resultado = doador2.doarMedicamento(instituicaoII, "Vermifugo");
+    const resultado = doador2.doarMedicamento(abrigoII, "Vermifugo");
     expect(resultado).toEqual("A Intuição Informada não existe.");
   });
 
   it("Teste se o método doarDinheiro e doarRacao deve retornar mensagm quando o valor doado for menor igual a zero", () => {
-    const resultado = doador1.doarRacao(instituicao, 0);
-    const resultadoII = doador2.doarDinheiro(instituicao, 0);
+    const resultado = doador1.doarRacao(abrigo, 0);
+    const resultadoII = doador2.doarDinheiro(abrigo, 0);
     expect(resultado).toEqual(
       "A quantidade de ração doada deve ser maior que zero."
     );

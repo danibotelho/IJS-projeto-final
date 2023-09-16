@@ -1,16 +1,16 @@
-const Instituicao = require("./Instituicao");
+const Abrigo = require("./Abrigo");
 const Animal = require("../Animal/Animal");
 const Tutor = require("../Pessoa/Tutor");
 const Doador = require("../Pessoa/Doador");
 
-let instituicao;
+let abrigo;
 let tutora;
 let doador;
 let cachorro;
 let gato;
 
 beforeEach(() => {
-  instituicao = new Instituicao("Abrigo de Animais Felizes");
+  abrigo = new Abrigo("abrigo de Animais Felizes");
   tutora = new Tutor(
     "Maria",
     "987.654.321-21",
@@ -33,16 +33,16 @@ beforeEach(() => {
     "Um gatinho preto muito animado e carinhoso."
   );
 });
-describe("Instituição", () => {
-  it("Teste se o método adicionarAnimalAoAbrigo funciona corretamente", () => {
-    instituicao.adicionarAnimalAoAbrigo(cachorro);
-    expect(instituicao.animaisDisponiveisParaAdocao).toHaveLength(1);
+describe("Abrigo", () => {
+  it("Teste se o método adicionarAnimalAoabrigo funciona corretamente", () => {
+    abrigo.adicionarAnimalAoabrigo(cachorro);
+    expect(abrigo.animaisDisponiveisParaAdocao).toHaveLength(1);
   });
 
   it("Teste se o método listarAnimaisDisponiveis funciona corretamente", () => {
-    instituicao.adicionarAnimalAoAbrigo(cachorro);
-    instituicao.adicionarAnimalAoAbrigo(gato);
-    const resultado = instituicao.listarAnimaisDisponiveis();
+    abrigo.adicionarAnimalAoabrigo(cachorro);
+    abrigo.adicionarAnimalAoabrigo(gato);
+    const resultado = abrigo.listarAnimaisDisponiveis();
 
     expect(resultado).toStrictEqual([
       { especie: "Cachorro", nome: "Rex" },
@@ -52,20 +52,20 @@ describe("Instituição", () => {
   });
 
   it("Teste se o método listarAnimaisAdotados funciona corretamente", () => {
-    instituicao.adicionarAnimalAoAbrigo(cachorro);
-    instituicao.adicionarAnimalAoAbrigo(gato);
-    tutora.adotarAnimal(instituicao, gato);
-    const resultado = instituicao.listarAnimaisAdotados();
+    abrigo.adicionarAnimalAoabrigo(cachorro);
+    abrigo.adicionarAnimalAoabrigo(gato);
+    tutora.adotarAnimal(abrigo, gato);
+    const resultado = abrigo.listarAnimaisAdotados();
 
     expect(resultado).toStrictEqual([{ especie: "Gato", nome: "Pxon" }]);
     expect(resultado.length).toBe(1);
   });
 
   it("Teste se o método listarDoações funciona corretamente", () => {
-    doador.doarDinheiro(instituicao, 100);
-    doador.doarRacao(instituicao, 10);
-    doador.doarMedicamento(instituicao, "Vermifugo");
-    const resultado = instituicao.listarDoacoes();
+    doador.doarDinheiro(abrigo, 100);
+    doador.doarRacao(abrigo, 10);
+    doador.doarMedicamento(abrigo, "Vermifugo");
+    const resultado = abrigo.listarDoacoes();
 
     expect(resultado).toStrictEqual([
       {
@@ -86,7 +86,7 @@ describe("Instituição", () => {
   });
 
   it("Teste se o método listarDoações funciona corretamente", () => {
-    const resultado = instituicao.listarDoacoes();
+    const resultado = abrigo.listarDoacoes();
     expect(resultado).toStrictEqual([
       { tipo: "dinheiro", valor: "0.00" },
       { quantidade: "0 kg", tipo: "racao" },

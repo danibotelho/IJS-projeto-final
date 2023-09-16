@@ -1,14 +1,14 @@
 const Animal = require("../Animal/Animal");
-const Instituicao = require("../Instituicao/Instituicao");
+const Abrigo = require("../Abrigo/Abrigo");
 const Tutor = require("./Tutor");
 
-let instituicao, instituicaoII;
+let abrigo, abrigoII;
 let cachorro;
 let gato;
 let tutor, tutora;
 
 beforeEach(() => {
-  instituicao = new Instituicao("Abrigo de Animais Felizes");
+  abrigo = new Abrigo("abrigo de Animais Felizes");
   tutor = new Tutor(
     "João",
     "123.456.789-00",
@@ -33,25 +33,25 @@ beforeEach(() => {
 });
 describe("Pessoa Tutora", () => {
   it("Teste se o método adotarAnimal funciona corretamente", () => {
-    tutor.adotarAnimal(instituicao, cachorro);
+    tutor.adotarAnimal(abrigo, cachorro);
     expect(
       tutor.animaisAdotados.map((cachorro) => cachorro.nome)
     ).toStrictEqual(["Rex"]);
   });
 
   it("Teste se o método adotarAnimal quando a Intituição informada não existe", () => {
-    const resultado = tutor.adotarAnimal(instituicaoII, gato);
-    expect(resultado).toEqual("A Instituição informada não existe.");
+    const resultado = tutor.adotarAnimal(abrigoII, gato);
+    expect(resultado).toEqual("A Abrigo informada não existe.");
   });
   it("Teste se o método adotar funciona quando duas pessoas diferentes tentam adotar o mesmo animal", () => {
-    tutor.adotarAnimal(instituicao, cachorro);
-    expect(tutora.adotarAnimal(instituicao, cachorro)).toEqual(
+    tutor.adotarAnimal(abrigo, cachorro);
+    expect(tutora.adotarAnimal(abrigo, cachorro)).toEqual(
       `${cachorro.nome} já está adotado.`
     );
   });
 
   it("Teste se o método listarAnimaisAdotados funciona corretamente", () => {
-    tutor.adotarAnimal(instituicao, gato);
+    tutor.adotarAnimal(abrigo, gato);
     const result = tutor.listarAnimaisAdotados();
     expect(result).toEqual([{ especie: "Gato", nome: "Pxon" }]);
   });
