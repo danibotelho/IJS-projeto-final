@@ -21,6 +21,11 @@ describe("Pessoa", () => {
     expect(pessoa.nomeCompleto).toBe("João Silva");
   });
 
+  it("deve permitir definir um novo nome completo da pessoa", () => {
+    pessoa.nomeCompleto = "Fernando Santos"
+    expect(pessoa.nomeCompleto).toBe("Fernando Santos");
+  });
+
   it("deve retornar a idade da pessoa", () => {
     expect(pessoa.idade).toBe(30);
   });

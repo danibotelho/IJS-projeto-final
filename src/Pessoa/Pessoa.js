@@ -1,14 +1,23 @@
 class Pessoa {
+  #nomeCompleto;
   #idade;
   #cpf;
   #telefone;
 
   constructor(nomeCompleto, cpf, idade, telefone, email) {
-    this.nomeCompleto = nomeCompleto;
+    this.#nomeCompleto = nomeCompleto;
     this.#cpf = cpf;
-    this.idade = idade;
-    this.telefone = telefone;
+    this.#idade = idade;
+    this.#telefone = telefone;
     this.email = email;
+  }
+
+  get nomeCompleto() {
+    return this.#nomeCompleto;
+  }
+
+  set nomeCompleto(novoNomeCompleto) {
+    this.#nomeCompleto = novoNomeCompleto;
   }
 
   get idade() {
