@@ -1,15 +1,20 @@
+
 const Doador = require("./Pessoa/Doador");
 const Animal = require("./Animal/Animal");
-const Instituicao = require("./Instituicao/Instituicao");
+const Abrigo = require("./Abrigo/Abrigo");
 const Tutor = require("./Pessoa/Tutor");
 
-const doadorJoao = new Doador(
-  "João",
-  "123.456.789-00",
-  35,
-  "(12) 3456-7890",
-  "joao@example.com"
-);
+const abrigo = new Abrigo("Abrigo de Animais Felizes", 
+"Rua de Animais", "Bem-estar e a segurança dos animais,");
+
+const cachorro = new Animal("Menina","Cachorro", 3, 
+"Uma cachorra muito amigável.");
+
+const doadorJoao = new Doador("João","123.456.789-00", 35,
+ "(12) 3456-7890", "joao@example.com");
+
+ const tutoraMaria = new Tutor("Maria","789.123.456-00", 28,
+"(11) 9876-5432", "maria@example.com");
 
 const doadoraClaudia = new Doador(
   "Claudia",
@@ -18,12 +23,7 @@ const doadoraClaudia = new Doador(
   "(11) 98877-8333",
   "joao@example.com"
 );
-const cachorro = new Animal(
-  "Menina",
-  "Cachorro",
-  3,
-  "Uma cachorra muito amigável."
-);
+
 const cachorro2 = new Animal(
   "Botão",
   "Cachorro",
@@ -43,14 +43,6 @@ const gato2 = new Animal(
   "Um gatinho fofinho e que adora dormir."
 );
 
-const instituicao = new Instituicao("Abrigo de Animais Felizes");
-const tutoraMaria = new Tutor(
-  "Maria",
-  "789.123.456-00",
-  28,
-  "(11) 9876-5432",
-  "maria@example.com"
-);
 const tutorMarcos = new Tutor(
   "Marcos",
   "789.321.654-00",
@@ -59,40 +51,41 @@ const tutorMarcos = new Tutor(
   "marcos@example.com"
 );
 console.log(
-  "--- Adicionando Animais a lista de disponiveis da Instituição ---"
+  "--- Adicionando Animais a lista de disponiveis da Abrigo ---"
 );
-instituicao.adicionarAnimalAoAbrigo(cachorro);
-instituicao.adicionarAnimalAoAbrigo(cachorro2);
-instituicao.adicionarAnimalAoAbrigo(gato);
-instituicao.adicionarAnimalAoAbrigo(gato2);
-console.log(instituicao.listarAnimaisDisponiveis());
+abrigo.adicionarAnimalAoabrigo(cachorro);
+abrigo.adicionarAnimalAoabrigo(cachorro2);
+abrigo.adicionarAnimalAoabrigo(gato);
+abrigo.adicionarAnimalAoabrigo(gato2);
+console.log(abrigo.listarAnimaisDisponiveis());
 console.log("\n");
 
-console.log("--- Doações para a Instituição ---");
-doadorJoao.doarDinheiro(instituicao, 100);
-doadorJoao.doarRacao(instituicao, 10);
-doadorJoao.doarMedicamento(instituicao, "Vermifugo");
+console.log("--- Doações para a Abrigo ---");
+doadorJoao.doarDinheiro(abrigo, 100);
+doadorJoao.doarRacao(abrigo, 10);
+doadorJoao.doarMedicamento(abrigo, "Vermifugo");
 console.log("\n");
 
-doadoraClaudia.doarDinheiro(instituicao, 150);
-doadoraClaudia.doarRacao(instituicao, 15);
-doadoraClaudia.doarMedicamento(instituicao, "Pomada Cicatrizante");
+doadoraClaudia.doarDinheiro(abrigo, 150);
+doadoraClaudia.doarRacao(abrigo, 15);
+doadoraClaudia.doarMedicamento(abrigo, "Pomada Cicatrizante");
 console.log("\n");
 
-console.log("---Listar doações que a Instituição recebeu ---");
-console.log(instituicao.listarDoacoes());
+console.log("---Listar doações que a Abrigo recebeu ---");
+console.log(abrigo.listarDoacoes());
 console.log("\n");
 
 console.log("--- Mostrar adoção de animal ---");
-tutoraMaria.adotarAnimal(instituicao, gato);
-tutorMarcos.adotarAnimal(instituicao, cachorro2);
+tutoraMaria.adotarAnimal(abrigo, gato);
+tutorMarcos.adotarAnimal(abrigo, cachorro2);
+console.log(`${gato.nome} foi adotado por ${gato.tutor}`)
 
 console.log("\n");
 
 console.log("---Listar Animais adotados e Animais disponiveis para adoção ---");
-console.log("Animal adotado: ", instituicao.listarAnimaisAdotados());
+console.log("Animal adotado: ", abrigo.listarAnimaisAdotados());
 console.log("\n");
 console.log(
   "Animal disponivel para adoção: ",
-  instituicao.listarAnimaisDisponiveis()
+  abrigo.listarAnimaisDisponiveis()
 );
